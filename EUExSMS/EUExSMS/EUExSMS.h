@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "EUExBase.h"
 #import <MessageUI/MessageUI.h>
 
 #define UEX_PLATFORM_SMS_ARGS		4
