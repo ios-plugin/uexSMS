@@ -18,7 +18,7 @@
 //}
 
 -(void)dealloc{
-	[super dealloc];
+	
 }
 
 -(void) displaySMSWithArgs:(NSArray *)photoNumArray content:(NSString *)content{
@@ -35,7 +35,7 @@
     }
 	//[EUtility brwView:meBrwView presentModalViewController:picker animated:NO];
     [[self.webViewEngine viewController] presentViewController:picker animated:NO completion:nil];
-    [picker release];
+    
 }
 
 - (void) alertWithTitle:(NSString *)title msg:(NSString *)msg {
@@ -45,7 +45,7 @@
 										  cancelButtonTitle:@"确定"
 										  otherButtonTitles:nil];
     [alert show];
-    [alert release];
+    
 }
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)picker
@@ -71,11 +71,12 @@
 
 -(void)open:(NSMutableArray *)inArguments {
 	NSArray *photoNumArray = nil;
-    NSString *phoneNum = [inArguments objectAtIndex:0];
+    //NSString *phoneNum = [inArguments objectAtIndex:0];
+    ACArgsUnpack(NSString *phoneNum, NSString *content) = inArguments;
     if ([phoneNum isKindOfClass:[NSString class]] && phoneNum.length>0) {
         photoNumArray = [phoneNum componentsSeparatedByString:@","];
     }
-	NSString *content = [inArguments objectAtIndex:1];
+	//NSString *content = [inArguments objectAtIndex:1];
 	//判断是不是ipod，ipod不能发送短信，判断是不是ios4.0以上的版本，如果不是的话就不能在程序内发送短信
 	if ([[[UIDevice currentDevice] model] isEqualToString:@"iPod touch"]) {
 		//[self jsFailedWithOpId:0 errorCode:1180108 errorDes:UEX_ERROR_DESCRIBE_DEVICE_SUPPORT];
