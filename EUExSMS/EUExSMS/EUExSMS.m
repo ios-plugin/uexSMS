@@ -11,14 +11,14 @@
 #import "EUExBaseDefine.h"
 
 @implementation EUExSMS
--(id)initWithBrwView:(EBrowserView *) eInBrwView {
-	if (self = [super initWithBrwView:eInBrwView]) {
-	}
-	return self;
-}
+//-(id)initWithBrwView:(EBrowserView *) eInBrwView {
+//	if (self = [super initWithBrwView:eInBrwView]) {
+//	}
+//	return self;
+//}
 
 -(void)dealloc{
-	[super dealloc];
+	
 }
 
 -(void) displaySMSWithArgs:(NSArray *)photoNumArray content:(NSString *)content{
@@ -33,8 +33,9 @@
     if ([photoNumArray isKindOfClass:[NSArray class]] && [photoNumArray count]>0) {
         picker.recipients = photoNumArray;
     }
-	[EUtility brwView:meBrwView presentModalViewController:picker animated:NO];
-    [picker release];
+	//[EUtility brwView:meBrwView presentModalViewController:picker animated:NO];
+    [[self.webViewEngine viewController] presentViewController:picker animated:NO completion:nil];
+    
 }
 
 - (void) alertWithTitle:(NSString *)title msg:(NSString *)msg {
@@ -44,7 +45,7 @@
 										  cancelButtonTitle:@"确定"
 										  otherButtonTitles:nil];
     [alert show];
-    [alert release];
+    
 }
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)picker
@@ -70,14 +71,15 @@
 
 -(void)open:(NSMutableArray *)inArguments {
 	NSArray *photoNumArray = nil;
-    NSString *phoneNum = [inArguments objectAtIndex:0];
+    //NSString *phoneNum = [inArguments objectAtIndex:0];
+    ACArgsUnpack(NSString *phoneNum, NSString *content) = inArguments;
     if ([phoneNum isKindOfClass:[NSString class]] && phoneNum.length>0) {
         photoNumArray = [phoneNum componentsSeparatedByString:@","];
     }
-	NSString *content = [inArguments objectAtIndex:1];
+	//NSString *content = [inArguments objectAtIndex:1];
 	//判断是不是ipod，ipod不能发送短信，判断是不是ios4.0以上的版本，如果不是的话就不能在程序内发送短信
 	if ([[[UIDevice currentDevice] model] isEqualToString:@"iPod touch"]) {
-		[self jsFailedWithOpId:0 errorCode:1180108 errorDes:UEX_ERROR_DESCRIBE_DEVICE_SUPPORT];
+		//[self jsFailedWithOpId:0 errorCode:1180108 errorDes:UEX_ERROR_DESCRIBE_DEVICE_SUPPORT];
 		return;
 	}
 	if ([[[UIDevice currentDevice] systemVersion] floatValue]<4.0) {
@@ -92,10 +94,10 @@
             if ([messageClass canSendText]) {
                 [self displaySMSWithArgs:photoNumArray content:content];
             } else {
-                [super jsFailedWithOpId:0 errorCode:1180108 errorDes:UEX_ERROR_DESCRIBE_DEVICE_SUPPORT];
+                //[super jsFailedWithOpId:0 errorCode:1180108 errorDes:UEX_ERROR_DESCRIBE_DEVICE_SUPPORT];
             }
         } else {
-            [super jsFailedWithOpId:0 errorCode:1180108 errorDes:UEX_ERROR_DESCRIBE_DEVICE_SUPPORT];
+            //[super jsFailedWithOpId:0 errorCode:1180108 errorDes:UEX_ERROR_DESCRIBE_DEVICE_SUPPORT];
         }
 	}
 }

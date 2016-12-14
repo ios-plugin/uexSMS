@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2127A5851D24E6AF00134EFB /* AppCanKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2127A5841D24E6AF00134EFB /* AppCanKit.framework */; };
 		5A9FEF471890A30500E16C52 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A9FEF461890A30500E16C52 /* Foundation.framework */; };
 		5A9FEF4E1890A30500E16C52 /* EUExSMS.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9FEF4D1890A30500E16C52 /* EUExSMS.m */; };
 /* End PBXBuildFile section */
@@ -24,6 +25,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2127A5841D24E6AF00134EFB /* AppCanKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppCanKit.framework; sourceTree = "<group>"; };
 		3C76C47B18AB70AC00BBE8D1 /* EUExSMS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EUExSMS.h; sourceTree = "<group>"; };
 		5A9FEF431890A30500E16C52 /* libuexSMS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libuexSMS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A9FEF461890A30500E16C52 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -31,7 +33,6 @@
 		5A9FEF4D1890A30500E16C52 /* EUExSMS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EUExSMS.m; sourceTree = "<group>"; };
 		5A9FEF541890A30500E16C52 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		5A9FEF571890A30500E16C52 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		5A9FEF6D1890A36100E16C52 /* EUExBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExBase.h; sourceTree = "<group>"; };
 		5A9FEF6E1890A36100E16C52 /* EUExBaseDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExBaseDefine.h; sourceTree = "<group>"; };
 		5A9FEF6F1890A36100E16C52 /* EUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUtility.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -41,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2127A5851D24E6AF00134EFB /* AppCanKit.framework in Frameworks */,
 				5A9FEF471890A30500E16C52 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,7 +100,7 @@
 		5A9FEF6C1890A36100E16C52 /* engineHeader */ = {
 			isa = PBXGroup;
 			children = (
-				5A9FEF6D1890A36100E16C52 /* EUExBase.h */,
+				2127A5841D24E6AF00134EFB /* AppCanKit.framework */,
 				5A9FEF6E1890A36100E16C52 /* EUExBaseDefine.h */,
 				5A9FEF6F1890A36100E16C52 /* EUtility.h */,
 			);
@@ -244,9 +246,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/uexSMS/";
 				DSTROOT = /tmp/EUExSMS.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/EUExSMS",
+					"$(PROJECT_DIR)/EUExSMS/engineHeader",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EUExSMS/EUExSMS-Prefix.pch";
 				ONLY_ACTIVE_ARCH = NO;
@@ -260,9 +267,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/uexSMS/";
 				DSTROOT = /tmp/EUExSMS.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/EUExSMS",
+					"$(PROJECT_DIR)/EUExSMS/engineHeader",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EUExSMS/EUExSMS-Prefix.pch";
 				ONLY_ACTIVE_ARCH = NO;
